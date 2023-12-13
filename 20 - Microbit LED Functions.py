@@ -23,8 +23,26 @@ def show_grid():
     result = result[0:-1] #remove trailing :
     print(result) #may want to comment out
     microbit.display.show(microbit.Image(result))
-                           
- 
+
+def set_pixel(x,y,intensity):
+    #set a pixel at (x,y) to brightness: intensity(0-9)
+    grid[y][x] = intensity
+    show_grid()
+    
+def queue_pixel(x,y,intensity):
+    # queue a change for a particular x,y pixel
+    grid[y][x] = intensity
+
+def plot(x,y):
+    #turn on pixel at (x,y) to full brightness
+    set_pixel(x,y,9)
+
+def unplot(x,y):
+    #turn off a pixel at (x,y)
+    set_pixel(x,y,0)
+
+
+    
 def print_grid():
     #print out grid in an easy-to-read format
     for row in grid:
